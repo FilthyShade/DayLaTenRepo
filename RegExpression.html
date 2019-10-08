@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<style>
+		.errorMsg{
+			border: red solid 1px;
+		}
+		.validMsg{
+			border: green solid 1px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#btnCheck").click(function(event) {
+				/* Act on the event */
+				var email = $("#email").val();
+				var pat = new RegExp("^.+@.+[\.]((com)|(net))$");
+				if (pat.test(email)){
+					$("#email").addClass('validMsg');
+				} else {
+					$("#email").addClass('errorMsg');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<section id="page" data-role="page">
+		<header data-role="header">
+			<h1>Header</h1>
+		</header><!-- /header -->
+		<article role="main" class="ui-content">
+			<form action="">
+				<div data-role="fieldcontain">
+					<label for="textbox">Start with character A</label>
+					<input type="text" pattern="^[Aa].*" title="Start with character A" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="textbox">First character can be A, B or C</label>
+					<input type="text" pattern="^[ABC].*" />
+				</div>
+			
+				<div data-role="fieldcontain">
+					<label for="textbox">Fi</label>
+					<input type="text" name="textbox" id="textBox" value=""/>	
+				</div>
+				<div data-role="fieldcontain">
+					<label for="textbox"> First char is A-C and second from 0-5</label>
+					<input type="text" pattern="^[A-C][0-5].*" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="textbox"> First char is alphabet, second is a digit</label>
+					<input type="text" pattern="^[A-Za-z]\d" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="textbox">ddd-ddddd</label>
+					<input type="text" pattern="^\d{3}-\d{5}$" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="textBox">Email check .com/.net</label>
+					<input type="text" id="email" pattern="^.+@.+[\.]((com)|(net))$"  />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="textBox">Word word</label>
+					<input type="text" pattern="^[A-Za-z]+\s[A-Za-z]+$"  />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="textBox">boundary 5</label>
+					<input type="text" pattern="^.*\b5.*$"  />
+				</div>
+				<input type="submit" value="check">
+			</form>
+
+		</article><!-- /content -->
+		<footer data-role="footer">
+			<h1>Footer</h1>
+		</footer><!-- /footer -->
+	</section><!-- /page -->
+</body>
+</html>
